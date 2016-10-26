@@ -3,7 +3,7 @@
 
 # --- !Ups
 
-create table "games" ("player_1" VARCHAR(254) NOT NULL,"player_2" VARCHAR(254) NOT NULL,"score_1" VARCHAR(254) NOT NULL,"score_2" VARCHAR(254) NOT NULL,"date" VARCHAR(254) NOT NULL);
+create table "games" ("player_1" VARCHAR(254) NOT NULL,"player_2" VARCHAR(254) NOT NULL,"score_1" INTEGER NOT NULL,"score_2" INTEGER NOT NULL,"date" VARCHAR(254) NOT NULL,"id" SERIAL NOT NULL PRIMARY KEY);
 
 # --- !Downs
 
