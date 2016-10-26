@@ -1,2 +1,2 @@
-web: target/universal/stage/bin/PingPongBackend -Dhttp.port=$PORT -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
- console: target/universal/stage/bin/PingPongBackend -main scala.tools.nsc.MainGenericRunner -usejavacp
+web: target/universal/stage/bin/ping-pong-backend -Dhttp.port=$PORT -Dplay.evolutions.db.default.autoApply=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}
+ console: target/universal/stage/bin/ping-pong-backend -main scala.tools.nsc.MainGenericRunner -usejavacp
