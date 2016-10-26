@@ -38,13 +38,13 @@ object Application extends Controller{
     rs.request.body.validate[Players].map { players =>
       val game = Game(players.player_1,players.player_2,players.score_1.toInt,players.score_2.toInt, Calendar.getInstance().getTime.toString,None)
       games.insert(game)
-        Ok(toJson(game)).withHeaders(
-          "Access-Control-Allow-Origin" -> "*",
-          "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With",
-          "Access-Control-Allow-Credentials" -> "true",
-          "Access-Control-Max-Age" -> (60 * 60 * 24).toString
-        )
+      Ok(toJson(game)).withHeaders(
+        "Access-Control-Allow-Origin" -> "*",
+        "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With",
+        "Access-Control-Allow-Credentials" -> "true",
+        "Access-Control-Max-Age" -> (60 * 60 * 24).toString
+      )
     }.getOrElse(BadRequest("invalid json"))    
   }
 
