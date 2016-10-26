@@ -14,7 +14,7 @@ import play.api.mvc.BodyParsers._
 import play.api.libs.json.Json
 import play.api.libs.json.Json._
 
-object Application extends Controller{
+object Application extends Controller {
 
   //create an instance of the table]
   val games = TableQuery[GamesTable]
@@ -36,7 +36,7 @@ object Application extends Controller{
 
   def jsonInsert = DBAction(parse.json) { implicit rs =>
     rs.request.body.validate[Players].map { players =>
-      val game = Game(players.player_1,players.player_2,players.score_1.toInt,players.score_2.toInt, Calendar.getInstance().getTime.toString,None)
+      val game = Game(players.player_1, players.player_2, players.score_1.toInt, players.score_2.toInt, Calendar.getInstance().getTime.toString, None)
       games.insert(game)
       Ok(toJson(game)).withHeaders(
         "Access-Control-Allow-Origin" -> "*",
@@ -45,7 +45,17 @@ object Application extends Controller{
         "Access-Control-Allow-Credentials" -> "true",
         "Access-Control-Max-Age" -> (60 * 60 * 24).toString
       )
-    }.getOrElse(BadRequest("invalid json"))    
+    }.getOrElse(BadRequest("invalid json"))
+  }
+
+  def options(path: String) = Action {
+    Ok("").withHeaders(
+      "Access-Control-Allow-Origin" -> "*",
+      "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With",
+      "Access-Control-Allow-Credentials" -> "true",
+      "Access-Control-Max-Age" -> (60 * 60 * 24).toString
+    )
   }
 
 }
