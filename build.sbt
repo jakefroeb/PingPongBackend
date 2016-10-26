@@ -1,4 +1,4 @@
-name := "activator-play-slick"
+name := "ping-pong-backend"
 
 version := "1.0-SNAPSHOT"
 
