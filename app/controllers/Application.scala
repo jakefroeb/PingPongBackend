@@ -25,7 +25,7 @@ object Application extends Controller{
   implicit val gameFormat = Json.format[Game]
 
   def jsonFindAll = DBAction { implicit rs =>
-    Ok(Json.obj("game" -> toJson(games.list))).withHeaders(
+    Ok(toJson(games.list)).withHeaders(
       "Access-Control-Allow-Origin" -> "*",
       "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With",
@@ -38,7 +38,7 @@ object Application extends Controller{
     rs.request.body.validate[Players].map { players =>
       val game = Game(players.player_1,players.player_2,players.score_1,players.score_2, Calendar.getInstance().getTime.toString,None)
       games.insert(game)
-        Ok(Json.obj("game" -> toJson(game))).withHeaders(
+        Ok(toJson(game)).withHeaders(
           "Access-Control-Allow-Origin" -> "*",
           "Access-Control-Allow-Methods" -> "GET, POST, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers" -> "Accept, Origin, Content-type, X-Json, X-Prototype-Version, X-Requested-With",
