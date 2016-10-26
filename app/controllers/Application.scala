@@ -36,7 +36,7 @@ object Application extends Controller{
 
   def jsonInsert = DBAction(parse.json) { implicit rs =>
     rs.request.body.validate[Players].map { players =>
-      val game = Game(players.player_1,players.player_2,players.score_1,players.score_2, Calendar.getInstance().getTime.toString,None)
+      val game = Game(players.player_1,players.player_2,players.score_1.toInt,players.score_2.toInt, Calendar.getInstance().getTime.toString,None)
       games.insert(game)
         Ok(toJson(game)).withHeaders(
           "Access-Control-Allow-Origin" -> "*",
