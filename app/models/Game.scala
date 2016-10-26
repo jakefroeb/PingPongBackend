@@ -9,7 +9,7 @@ import play.api.db.slick.Config.driver.simple._
   */
 //case class Player(name : String, score: String)
 
-case class Players(player_1 :String, score_1: String, player_2 : String, score_2:String)
+case class Players(player_1 :String, score_1: Int, player_2 : String, score_2:Int)
 
 case class Game(player_1 :String, player_2:String,  score_1: Int,  score_2:Int, date: String, id: Option[Int] = None)
 
